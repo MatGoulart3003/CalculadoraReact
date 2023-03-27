@@ -44,16 +44,19 @@ export default function Calculator() {
   
 
   function calculate(){
-    
+    let newResult = 0
     if(operator === '+'){
-      setResult(parseFloat(num2) + parseFloat(num))
-    }else if (operator === '-'){
-      setResult(parseFloat(num2) - parseFloat(num))
-    }else if (operator === '/'){
-      setResult(parseFloat(num2) / parseFloat(num))
-    }else {
-      setResult(parseFloat(num2) * parseFloat(num))
+      newResult = parseFloat(num2) + parseFloat(num)
+    } else if (operator === '-'){
+      newResult = parseFloat(num2) - parseFloat(num)
+    } else if (operator === '/'){
+      newResult = parseFloat(num2) / parseFloat(num)
+    } else {
+      newResult = parseFloat(num2) * parseFloat(num)
     }
+    setResult(prevResult => prevResult + newResult)
+    setNum2(newResult)
+    setNum(0)
   }
 
    return (
