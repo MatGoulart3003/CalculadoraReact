@@ -7,28 +7,41 @@ export default function Calculator() {
   const [num2, setNum2] = useState(0)
   const [operator, setOperator] = useState()
   const [result, setResult] = useState(0)
+  var [telaOperacao, setTelaOperacao] = useState('')
 
   function inputNum(event){
-    if(num === "c"){
-      setNum(num)
-    }else if (num===0){
+    if (num===0){
       setNum(event.target.value)
+      setTelaOperacao(telaOperacao+event.target.value)
     }else{
       setNum(num+event.target.value)
+      setTelaOperacao(telaOperacao+event.target.value)
     }
   }
   
-  function clear(event) {
+  
+
+  function clear() {
     setNum(0)
     setResult(0)
+    setTelaOperacao('')
   }
 
   function selectOperator(event){
     var aux = event.target.value
-    console.log(aux)
+    var aux2 = telaOperacao.length
+    
+    if(telaOperacao.charAt(aux2-1) === '+' || telaOperacao.charAt(aux2-1) === '-' || 
+    telaOperacao.charAt(aux2-1) === '*' || telaOperacao.charAt(aux2-1) === '/' ){
+      telaOperacao = (telaOperacao.substring(0, aux2 - 1))
+      console.log(telaOperacao) 
+    }
     setOperator(aux)
     setNum2(num)
-    setNum(0)
+    setNum(0) 
+    setTelaOperacao(telaOperacao + aux)
+    
+    
    }
 
   function calculate(){
@@ -45,7 +58,7 @@ export default function Calculator() {
 
    return (
     <div className='box'>
-      <h1 className='operation'>{num}</h1>
+      <h1 className='operation'>{telaOperacao}</h1>
       <h1 className='result'>{result}</h1>
         <button className='buttonRight' onClick={clear} value={"c"}>C</button>
         <button className='buttonLeft' onClick={selectOperator} value={"/"}>/</button>
