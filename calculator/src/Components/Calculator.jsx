@@ -27,28 +27,21 @@ export default function Calculator() {
     setResult(0)
     setTelaOperacao('')
   }
-
   function selectOperator(event){
     var aux = event.target.value
     var aux2 = telaOperacao.length
     
     if(telaOperacao.charAt(aux2-1) === '+' || telaOperacao.charAt(aux2-1) === '-' || 
     telaOperacao.charAt(aux2-1) === '*' || telaOperacao.charAt(aux2-1) === '/' ){
-      telaOperacao = (telaOperacao.substring(0, aux2 - 1))
-      console.log(telaOperacao) 
-      
+      setTelaOperacao(telaOperacao.substring(0, aux2 - 1) + aux)
     } else {
-
       setOperator(aux)
       setNum2(num)
       setNum(0)
-      console.log('num ' + num)
-      console.log('num 2 ' + num2)
       setTelaOperacao(telaOperacao + aux)
-
     }
-    
-   }
+  }
+  
 
   function calculate(){
     
