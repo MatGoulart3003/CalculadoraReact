@@ -22,6 +22,7 @@ export default function Calculator() {
   
 
   function clear() {
+    setNum2(0)
     setNum(0)
     setResult(0)
     setTelaOperacao('')
@@ -35,16 +36,22 @@ export default function Calculator() {
     telaOperacao.charAt(aux2-1) === '*' || telaOperacao.charAt(aux2-1) === '/' ){
       telaOperacao = (telaOperacao.substring(0, aux2 - 1))
       console.log(telaOperacao) 
+      
+    } else {
+
+      setOperator(aux)
+      setNum2(num)
+      setNum(0)
+      console.log('num ' + num)
+      console.log('num 2 ' + num2)
+      setTelaOperacao(telaOperacao + aux)
+
     }
-    setOperator(aux)
-    setNum2(num)
-    setNum(0) 
-    setTelaOperacao(telaOperacao + aux)
-    
     
    }
 
   function calculate(){
+    
     if(operator === '+'){
       setResult(parseFloat(num2) + parseFloat(num))
     }else if (operator === '-'){
