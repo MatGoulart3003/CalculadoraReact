@@ -10,12 +10,18 @@ export default function Calculator() {
   var [telaOperacao, setTelaOperacao] = useState('')
 
   function inputNum(event){
-    if (num===0){
-      setNum(event.target.value)
-      setTelaOperacao(telaOperacao+event.target.value)
+    let input = event.target.value
+   
+    if (input == 0){
+      console.log(input)
+      setTelaOperacao('')
+      return;      
+    }else if (num===0){
+      setNum(input)
+      setTelaOperacao(telaOperacao+input)
     }else{
-      setNum(num+event.target.value)
-      setTelaOperacao(telaOperacao+event.target.value)
+      setNum(num+input)
+      setTelaOperacao(telaOperacao+input)
     }
   }
   
